@@ -1,0 +1,7 @@
+ffmpeg-python==0.2.0
+fonttools==4.39.4
+imageio==2.9.0
+numpy==1.25.2
+opencv-contrib-python==4.7.0.72
+opencv-python-headless==4.8.0.76
+pytesseract==0.3.10
