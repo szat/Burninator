@@ -347,7 +347,7 @@ def get_video_stats(input_video, options="opencv"):
         return video_info
 
 
-def convert_to_h264(video_path):
+def convert_to_h264(video_path, quality=10):
     # Create a new file name with a temporary suffix
     temp_output = video_path + ".temp_h264.mp4"
 
@@ -356,7 +356,7 @@ def convert_to_h264(video_path):
         'ffmpeg',
         '-i', video_path,  # Input file
         '-c:v', 'libx264',  # Video codec to use
-        '-crf', '0',  # Quality, lower is better but larger file
+        '-crf', str(quality),  # Quality, lower is better but larger file
         '-c:a', 'aac',  # Audio codec to use
         '-strict', 'experimental',  # Sometimes needed for aac
         temp_output  # Output file
