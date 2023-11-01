@@ -4,6 +4,8 @@ Here you can take an initial video and burn the frame number and timestamp on it
 Like this:
 
 ```
+    from helpers import *
+
     # Define the name of your video file
     video_filename = "SiliconValleyBigHeadFiredFromHooli.mp4"  # Replace with the actual filename
     video_filename_burned = "SiliconValleyBigHeadFiredFromHooli_burned.mp4"
