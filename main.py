@@ -21,6 +21,7 @@ def main():
     video_path_burned = os.path.join(script_dir, video_filename_burned)
 
     burn_frame_info(video_path, video_path_burned)
+    convert_to_h264(video_path_burned)
 
     # Testing
     vid_stats = get_video_stats(video_path_burned, options='ffmpeg')

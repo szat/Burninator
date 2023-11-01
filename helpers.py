@@ -345,3 +345,27 @@ def get_video_stats(input_video, options="opencv"):
         else:
             print("Error: ffprobe command failed.")
         return video_info
+
+
+def convert_to_h264(video_path):
+    # Create a new file name with a temporary suffix
+    temp_output = video_path + ".temp_h264.mp4"
+
+    # Use ffmpeg to convert the video to h264 format
+    cmd = [
+        'ffmpeg',
+        '-i', video_path,  # Input file
+        '-c:v', 'libx264',  # Video codec to use
+        '-crf', '0',  # Quality, lower is better but larger file
+        '-c:a', 'aac',  # Audio codec to use
+        '-strict', 'experimental',  # Sometimes needed for aac
+        temp_output  # Output file
+    ]
+
+    subprocess.run(cmd, check=True)
+
+    # Delete the original video
+    os.remove(video_path)
+
+    # Rename the converted video to the original name
+    os.rename(temp_output, video_path)
