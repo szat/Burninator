@@ -25,6 +25,6 @@ https://github.com/szat/Read-Write-Video-Frame-Nb/assets/5555551/c577ce0c-b12d-4
 
 And here an example of the burnt video:
 
-https://github.com/szat/Read-Write-Video-Frame-Nb/assets/5555551/fdd84f41-d74e-4af8-a078-89002d4fb862
+https://github.com/szat/Read-Write-Video-Frame-Nb/assets/5555551/d19021f2-b8a0-4f8d-a550-ccd3daa944bf
 
 Let me know of any bugs or of cool functionality that could be implemnted in the issues section. Share if you find this useful for your work or research. 
