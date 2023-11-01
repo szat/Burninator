@@ -99,7 +99,7 @@ def convert_letters_to_numbers(input_string):
         # If the character is in the dictionary, append the corresponding number
         if char in letter_to_number:
             result += letter_to_number[char]
-        else:
+        elif char == '.' or char == ',':
             # If the character is not in the dictionary, keep it unchanged
             result += char
 
@@ -345,55 +345,3 @@ def get_video_stats(input_video, options="opencv"):
         else:
             print("Error: ffprobe command failed.")
         return video_info
-
-
-def merge_video_and_audio(video_path, audio_path, output_path):
-    if not os.path.exists(video_path):
-        print(f"Not finding the input video file {video_path}")
-        return
-    if not os.path.exists(audio_path):
-        print(f"Not finding the input audio file {audio_path}")
-        return
-    if os.path.exists(output_path):
-        print(f"The output video already exists {output_path}")
-        return
-
-    # ffmpeg command to merge video and audio
-    cmd = [
-        'ffmpeg',
-        '-i', video_path,
-        '-i', audio_path,
-        '-map', '0:v',
-        '-map', '1:a',
-        '-c:v', 'copy',
-        '-shortest',
-        output_path
-    ]
-
-    try:
-        # Run the ffmpeg command
-        subprocess.run(cmd, check=True)
-        print(f'Merged video and audio saved to: {output_path}')
-    except subprocess.CalledProcessError as e:
-        print(f'Error merging video and audio: {e}')
-
-
-def extract_audio(original_video_path, audio_output_path):
-    """
-    Extracts audio from a video file and saves it to the specified output path.
-    """
-    if not os.path.exists(original_video_path):
-        print(f"Not finding input video path {original_video_path}")
-        return
-
-    if os.path.exists(audio_output_path):
-        print(f"Audio {audio_output_path} already exists.")
-        return
-
-    try:
-        # Run ffmpeg command to extract audio
-        command = ['ffmpeg', '-i', original_video_path, '-map', '0:a', '-acodec', 'copy', audio_output_path]
-        subprocess.run(command, check=True)
-        print(f"Audio extracted and saved to {audio_output_path}.")
-    except subprocess.CalledProcessError as e:
-        print(f"Error extracting audio: {e}")
